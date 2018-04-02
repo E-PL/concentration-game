@@ -1,0 +1,274 @@
+/*style tags*/
+
+/*set box sizing on html*/
+html {
+    box-sizing: border-box;
+}
+
+/*set box sizing inheritance on all tags*/
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/*reset margin and padding*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*set background image and font family on body*/
+body {
+    background: #ffffff url('../img/geometry2.png');
+    font-family: 'Coda', cursive;
+}
+
+/*style the headings tags*/
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    margin: 0.8em;
+}
+h2,
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+/*style the container*/
+.container {
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 10px;
+}
+
+/*style the card deck*/
+.deck {
+    width: 98%;
+    /*min-height: 680px;*/
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 23%);
+    grid-template-rows: 100px 100px 100px 100px;
+    grid-auto-flow: row;
+    margin: auto;
+}
+
+/*style the cards*/
+.deck .card {
+    height: 90px;
+    width: 100%;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+/*style the open cards*/
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+/*style the showed cards*/
+.deck .card.show {
+    font-size: 2em;
+}
+
+/*style the matched cards*/
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+}
+
+/*style the score panel*/
+.score-panel {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+/*set time div width*/
+.scores-time {
+    width:20%;
+}
+
+/*set moves div width*/
+.scores-moves {
+    width: 22%;
+}
+
+/*set margin and padding on the stars*/
+.score-panel .stars {
+    margin: auto;
+    padding: 0;
+}
+
+/*style the stars list*/
+.score-panel .stars li {
+    list-style: none;
+    display: inline-flex;
+}
+
+/*style the restart button*/
+.score-panel .restart {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/*prevent events from originating from i tags (they should fire only on li targets)*/
+.fa {
+    pointer-events: none;
+}
+
+/*style the modal*/
+.modal {
+    font-size: 2em;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    margin: auto;
+    text-align: center;
+}
+
+/*hide the modal*/
+.hide {
+    display: none;
+}
+
+/*styles win*/
+.win {
+    width: 100%;
+    text-align: center;
+}
+
+/*styles the play again button*/
+.play-again {
+    min-height: 50px;
+    min-width: 50px;
+    padding: 8px;
+    background-color: #02cc20;
+    border: 1px solid #02cc60;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/*style the empty stars*/
+.empty {
+    color: #ebeced;
+}
+
+/*set game section width*/
+.game {
+    width: 100%;
+}
+
+/*set score div width and flex*/
+.scores {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: center;
+}
+
+/*set modal moves and time width*/
+.modal-moves,
+.modal-time {
+    width: 100%;
+}
+
+/*set modal stars layout*/
+.modal-stars {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+/*set section title to inline*/
+.section-title {
+        display: inline-flex;
+}
+
+/*media queries*/
+
+/*tablet > 580 px*/
+@media screen and (min-width: 580px) {
+/*decrease container width, set margins and increase font size*/
+#container {
+    width: 65%;
+    margin: auto;
+    font-size: 1.7em;
+}
+/*adjust modal stars layout*/
+.modal-before-stars,
+.modal-after-stars {
+    width: 45%;
+}
+#deck {
+    grid-template-rows: 120px 120px 120px;
+}
+#deck .card {
+    height: 120px;
+}
+}
+
+/*Desktop > 1000 px*/
+@media screen and (min-width: 1000px) {
+/*decrease container width and font size*/
+#container {
+    width: 35%;
+    font-size: 1.5em;
+}
+#main-title {
+    margin: 3px;
+    padding: 3px;
+}
+}
+
+/*Desktop > 1400 px*/
+@media screen and (min-width: 1400px) {
+/*decrease container width*/
+#container {
+    width: 27%;
+}
+}
+/*Desktop > 2000 px*/
+@media screen and (min-width: 2000px) {
+/*decrease container width*/
+#container {
+    width: 22%;
+    max-width: 750px;
+}
+}
