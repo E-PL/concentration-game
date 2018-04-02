@@ -129,15 +129,15 @@ const game = {
 			time();
 		}
 		// decrease stars at 8, 16, 24 moves
-		if ( game.moves > 8 ) {
+		if ( game.moves > 16 ) {
 			document.getElementById( 'third-star' ).classList.add( 'empty' );
 			document.getElementById( 'third-star-modal' ).classList.add( 'empty' );
 		}
-		if ( game.moves > 16 ) {
+		if ( game.moves > 24 ) {
 			document.getElementById( 'second-star' ).classList.add( 'empty' );
 			document.getElementById( 'second-star-modal' ).classList.add( 'empty' );
 		}
-		if ( game.moves > 24 ) {
+		if ( game.moves > 32 ) {
 			document.getElementById( 'first-star' ).classList.add( 'empty' );
 			document.getElementById( 'first-star-modal' ).classList.add( 'empty' );
 		}
