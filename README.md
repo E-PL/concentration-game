@@ -9,11 +9,13 @@
 
 ## Instructions
 
+Navigate to https://e-pl.github.io/concentration-game/ to play the game
+
 Click on a card to show it
 
 Match all the card couples to win the game
 
-Click on the reset icon to start a new game.
+Click on the reset icon to start a new game
 
 ## Debugging
 
@@ -25,14 +27,16 @@ You can access them in your javascript console like this:
 
 ## Credits
 
+Forked from the Udacity starter code repository https://github.com/udacity/fend-project-memory-game 
 
 I have used a timer function from http://jsfiddle.net/fc37nckg/
 
 and a shuffle function from: http://stackoverflow.com/a/2450976
 
-The game also uses Font-Awesome and Google fonts
+The game uses Font Awesome and the Google Coda font
 
 ## Contributing
 
-This repository is an exercise for the Udacity Front End Web Developer Nanodegree. 
+This repository is an exercise for the Udacity Front End Web Developer Nanodegree.
+
 Therefore, I most likely will not accept pull requests.
