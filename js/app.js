@@ -193,6 +193,8 @@ const game = {
 		// remove open and show classes
 		target.classList.remove( 'open' );
 		target.classList.remove( 'show' );
+		document.body.classList.remove('disable-click');
+
 	},
 	// check if cards match
 	check: function() {
@@ -200,6 +202,7 @@ const game = {
 		if ( game.selectedCards.length === 2 ) {
 			const firstId = game.selectedIds[ 0 ];
 			const secondId = game.selectedIds[ 1 ];
+			document.body.classList.add('disable-click');
 			// if the card have the same index value but is a different HTML collection it's a match
 			if ( game.selectedCards[ 0 ] != game.selectedCards[ 1 ] && firstId === secondId ) {
 				// keep showing guessed cards
@@ -226,6 +229,7 @@ const game = {
 					game.selectedCards = [];
 					game.selectedIds = [];
 				}, 300 );
+
 			}
 		}
 		// end the check if no card is selected
@@ -241,6 +245,7 @@ const game = {
 			game.selectedCards = [];
 			game.selectedIds = [];
 		}
+
 	},
 	// at victory show modal with score
 	win: function() {
