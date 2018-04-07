@@ -128,19 +128,16 @@ const game = {
 			// start the timer
 			time();
 		}
-		// decrease stars at 8, 16, 24 moves
-		if ( game.moves > 16 ) {
+		// decrease stars at 20 and 32 moves
+		if ( game.moves > 20 ) {
 			document.getElementById( 'third-star' ).classList.add( 'empty' );
 			document.getElementById( 'third-star-modal' ).classList.add( 'empty' );
 		}
-		if ( game.moves > 24 ) {
+		if ( game.moves > 32 ) {
 			document.getElementById( 'second-star' ).classList.add( 'empty' );
 			document.getElementById( 'second-star-modal' ).classList.add( 'empty' );
 		}
-		if ( game.moves > 32 ) {
-			document.getElementById( 'first-star' ).classList.add( 'empty' );
-			document.getElementById( 'first-star-modal' ).classList.add( 'empty' );
-		}
+		
 		// increase moves counter
 		game.moves = game.moves + 0.5;
 		// update move counter on page and on the modal
