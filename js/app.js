@@ -213,6 +213,7 @@ const game = {
 				// reset the selected card list
 				game.selectedCards = [];
 				game.selectedIds = [];
+				document.body.classList.remove('disable-click');
 				// if the guess count reach eight the user wins
 				if ( game.guessed >= 8 ) {
 					game.win();
