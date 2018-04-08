@@ -69,6 +69,7 @@ const game = {
 			// create a li element and set class
 			const li = document.createElement( 'li' );
 			li.classList.add( 'card' );
+			li.classList.add( 'animated' );
 			// create an i element and set its class
 			const iElement = document.createElement( 'i' );
 			iElement.classList.add( deck[ i ].class );
@@ -137,7 +138,7 @@ const game = {
 			document.getElementById( 'second-star' ).classList.add( 'empty' );
 			document.getElementById( 'second-star-modal' ).classList.add( 'empty' );
 		}
-		
+
 		// increase moves counter
 		game.moves = game.moves + 0.5;
 		// update move counter on page and on the modal
@@ -174,24 +175,41 @@ const game = {
 	},
 	// show card
 	flip: function( target ) {
+		// animate the clicked card
+		target.classList.add('flipInY');
 		// add open and show classes
 		target.classList.add( 'open' );
 		target.classList.add( 'show' );
 	},
 	// keep showing guessed cards
 	lock: function( target ) {
-		// add match class
-		target.classList.add( 'match' );
+		// remove previusly applied flipInY animation
+		target.classList.remove('flipInY');
+		// animate the guessed card
+		target.classList.add( 'bounce' );
+		setTimeout( function wait() {
+			// add match class
+			target.classList.add( 'match' );
+		}, 200 );
+
 		// remove the event listener on the card
 		target.removeEventListener( 'click', game.click);
 	},
 	// hide cards
 	hide: function( target ) {
-		// remove open and show classes
-		target.classList.remove( 'open' );
-		target.classList.remove( 'show' );
-		document.body.classList.remove('disable-click');
+		// remove open and show classes after a 200ms wait
+		setTimeout( function wait() {
+			// hide the cards
+			target.classList.remove( 'open' );
+			target.classList.remove( 'show' );
+			// remove previously applied flipOutY animation
+			target.classList.remove( 'flipOutY' );
+		}, 200 );
 
+		// add animation when hiding the cards
+		target.classList.add('flipOutY');
+		// reactivate click on body
+		document.body.classList.remove('disable-click');
 	},
 	// check if cards match
 	check: function() {
@@ -210,6 +228,7 @@ const game = {
 				// reset the selected card list
 				game.selectedCards = [];
 				game.selectedIds = [];
+				// reactivate click on body
 				document.body.classList.remove('disable-click');
 				// if the guess count reach eight the user wins
 				if ( game.guessed >= 8 ) {
@@ -247,25 +266,38 @@ const game = {
 	},
 	// at victory show modal with score
 	win: function() {
-		// display winning time on the modal
-		const sec = document.getElementById( 'seconds' ).innerHTML;
-		const min = document.getElementById( 'minutes' ).innerHTML;
-		document.getElementById( 'modal-seconds' ).innerHTML = sec;
-		document.getElementById( 'modal-minutes' ).innerHTML = min;
-		// show the modal
-		const modal = document.getElementById( 'modal' );
-		modal.classList.remove( 'hide' );
-		// hide the main page
-		const container = document.getElementById( 'container' );
-		container.classList.add( 'hide' );
-		// set the click event listener on the play again botton
-		const playAgain = document.getElementById( 'replay' );
-		playAgain.addEventListener( 'click', function( event ) {
-			event.preventDefault();
-			game.reboot();
-		} );
-		// reset the timer
-		clearInterval( game.timer );
+		// remove fadeInUp animation
+		document.getElementById('deck').classList.remove('fadeInUp');
+		// add tada animation to deck
+		document.getElementById('deck').classList.add('animated');
+		document.getElementById('deck').classList.add('tada');
+		// wait for the animation to complete
+		setTimeout( function wait() {
+			// display winning time on the modal
+			const sec = document.getElementById( 'seconds' ).innerHTML;
+			const min = document.getElementById( 'minutes' ).innerHTML;
+			document.getElementById( 'modal-seconds' ).innerHTML = sec;
+			document.getElementById( 'modal-minutes' ).innerHTML = min;
+			// show the modal
+			const modal = document.getElementById( 'modal' );
+			modal.classList.remove( 'hide' );
+			// hide the main page
+			const container = document.getElementById( 'container' );
+			container.classList.add( 'hide' );
+			// set the click event listener on the play again botton
+			const playAgain = document.getElementById( 'replay' );
+			playAgain.addEventListener( 'click', function( event ) {
+				event.preventDefault();
+				game.reboot();
+			} );
+			// remove the animation classes from the deck
+			document.getElementById('deck').classList.remove('animated');
+			document.getElementById('deck').classList.remove('tada');
+
+			// reset the timer
+			clearInterval( game.timer );
+		}, 1000 );
+
 	},
 	// reset game
 	reboot: function() {
@@ -288,6 +320,9 @@ const game = {
 		clearInterval( game.timer );
 		document.getElementById( 'seconds' ).innerHTML = '00';
 		document.getElementById( 'minutes' ).innerHTML = '00';
+		// add a fadeInUp animation to the deck when the user reload the game
+		document.getElementById('deck').classList.add('animated');
+		document.getElementById('deck').classList.add('fadeInUp');
 	}
 };
 

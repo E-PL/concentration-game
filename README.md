@@ -33,7 +33,9 @@ I have used a timer function from http://jsfiddle.net/fc37nckg/
 
 and a shuffle function from: http://stackoverflow.com/a/2450976
 
-The game uses Font Awesome and the Google Coda font
+The game uses Font Awesome and the Google Coda font,
+
+the animations are realized using Animate.css: https://github.com/daneden/animate.css/
 
 ## Contributing
 
